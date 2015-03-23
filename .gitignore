@@ -1,0 +1,7 @@
+
+*.DS_Store
+composer.lock
+
+#ignore specific composer and facebook-module files
+**/vendor/facebook
+**/vendor/composer
