@@ -9,7 +9,8 @@
 	<?php 
 		if (isset($session)) {
 			//include_once "list.php";
-			echo $_SESSION["user"];
+			//echo $_SESSION["user"];
+			include_once "basiclist.php";
 		} else {
 			include_once "basiclist.php";
 		}
