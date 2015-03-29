@@ -32,23 +32,26 @@
 
 	// see if we have a session
 	if ( isset( $session ) ) {
-	  // graph api request for user data
-	  $request = new FacebookRequest( $session, 'GET', '/me' );
-	  $response = $request->execute();
-	  $graphObject = $response->getGraphObject();
+	  	// graph api request for user data
+	  	$request = new FacebookRequest( $session, 'GET', '/me' );
+	  	$response = $request->execute();
+	  	$graphObject = $response->getGraphObject();
+	  
+	 	//Save the user to the database
+	  	$id = $graphObject->getProperty('id');
+	  	$firstname = $graphObject->getProperty('first_name');
+	  	$lastname = $graphObject->getProperty('last_name');
+	  	$_SESSION["user"] = $id;
+	  	$_SESSION['u_firstname'] = $firstname;
+	  	$_SESSION['u_lastname'] = $lastname;
+	  	  
+	  	//Insert user in database
+	  	//$users = new ListUsers($db);
+	  	//$user = $users->createAccount($id,$firstname,$lastname);}
 
-	  //Save the user to the database
-	  $id = $graphObject->getProperty('id');
-	  $firstname = $graphObject->getProperty('first_name');
-	  $lastname = $graphObject->getProperty('last_name');
-	  $_SESSION["user"] = $id;
-	  $_SESSION['u_firstname'] = $firstname;
-	  $_SESSION['u_lastname'] = $lastname;
-	  $users = new ListUsers($db);
-	  $user = $users->createAccount($id,$firstname,$lastname);
-	  //echo '<p>'.$user.'</p>';
-	 // echo '<pre>' . print_r( $graphObject, 1 ) . '</pre>';
-	  echo '<a href="' . $helper->getLogoutUrl($session, $redirectUrl).'">Logout</a>';
+
+	 	echo '<pre>' . print_r( $graphObject, 1 ) . '</pre>';
+	  	echo '<a class=\"facebook-button\" href="' . $helper->getLogoutUrl($session, $redirectUrl).'">Logout</a>';
 	} else {
 	  // show login url
 	  echo '<a href="' . $helper->getLoginUrl( array( 'scope' => $scope)) . '">Login with Facebook</a>';

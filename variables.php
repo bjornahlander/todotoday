@@ -11,6 +11,5 @@
 	$redirectUrl = 'http://localhost/'; 
 	$scope = "public_profile, email";
 	
-	//Static classes
 	include_once "Utilities.php";
 ?>

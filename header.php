@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta author="Björn Åhlander">
+		<link rel="stylesheet" type="text/css" href="css/list.css"/>
 		<title>
 		What are you going ToDoToDay?
 		</title>
